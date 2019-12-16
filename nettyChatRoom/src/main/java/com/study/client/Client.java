@@ -5,15 +5,11 @@ package com.study.client;
  * @2019/12/13 15:03
  */
 
-import com.study.initializer.ChatRoomClientInitilizer;
+import com.study.initializer.ChatRoomClientInitializer;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-
-import java.util.Scanner;
 
 /**
  * 客户端
@@ -24,7 +20,7 @@ public class Client {
         Bootstrap bootstrap=new Bootstrap();
         bootstrap.group(group)
                 .channel(NioSocketChannel.class)
-                .handler(new ChatRoomClientInitilizer());
+                .handler(new ChatRoomClientInitializer());
         try {
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1",8000).sync();
             channelFuture.channel().closeFuture().sync();
